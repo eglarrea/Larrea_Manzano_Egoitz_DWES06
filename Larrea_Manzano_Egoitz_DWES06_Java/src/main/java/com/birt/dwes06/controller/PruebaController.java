@@ -1,6 +1,5 @@
 package com.birt.dwes06.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.birt.dwes06.bean.Respuesta;
 import com.birt.dwes06.dto.CinesDTO;
-
 import com.birt.dwes06.servicio.ServicioPeliculas;
 import com.birt.dwes06.utils.Utilidades;
 
