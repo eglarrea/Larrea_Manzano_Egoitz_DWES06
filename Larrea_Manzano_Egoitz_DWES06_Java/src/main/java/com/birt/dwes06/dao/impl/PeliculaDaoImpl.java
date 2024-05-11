@@ -23,7 +23,7 @@ public class PeliculaDaoImpl implements PeliculaDao {
 
         Session currentSession=entityManager.unwrap(Session.class);
         Query query= currentSession.createQuery(hql).setParameter("titulo", "%" + titulo + "%");
-        //query.setParameter("titulo", "%" + titulo + "%");
+       
         
         List<Cines> results = query.getResultList(); 
         return results;
