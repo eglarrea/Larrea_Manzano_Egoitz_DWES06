@@ -65,3 +65,9 @@ Actulizar datos del cine
 Eliminar un cine
 
 	url: http://127.0.0.1:8000/api/cines/2
+
+
+------------------------------------------------------------------ Buscar cines por pelicula llamada a micro servicio ------------------------------------------------------------------
+Buscar cines que contengas una pelicula
+
+	url: http://127.0.0.1:8000/api/cines/pelicula?pelicula=XXXXXXXX
