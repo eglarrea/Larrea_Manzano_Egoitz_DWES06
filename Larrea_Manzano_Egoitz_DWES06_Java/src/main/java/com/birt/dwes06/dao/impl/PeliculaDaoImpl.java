@@ -19,11 +19,11 @@ public class PeliculaDaoImpl implements PeliculaDao {
 
     @Override
     public List<Cines> findByTitulo(String titulo) {
-        String hql="select c.id , nombre , direccion, mail, telefono, b.idSala, b.pelicula from Cines c  left join Sala b on c.id= b.cines.id where pelicula Like :titulo";
+        String hql="select c.id , nombre , direccion, mail, telefono, b.idSala, b.pelicula,b.aforo,b.es3d from Cines c  left join Sala b on c.id= b.cines.id where pelicula Like :titulo";
 
         Session currentSession=entityManager.unwrap(Session.class);
-        Query query= currentSession.createQuery(hql);
-        query.setParameter("titulo", "%" + titulo + "%");
+        Query query= currentSession.createQuery(hql).setParameter("titulo", "%" + titulo + "%");
+        //query.setParameter("titulo", "%" + titulo + "%");
         
         List<Cines> results = query.getResultList(); 
         return results;

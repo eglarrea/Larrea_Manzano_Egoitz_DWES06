@@ -16,13 +16,15 @@ import com.birt.dwes06.servicio.ServicioPeliculas;
 public class ServicioPeliculasImp implements ServicioPeliculas {
 	@Autowired
 	private PeliculaDao peliculaDao;
+	
 	@Override
 	public List<CinesDTO> findByPelicula(String titulo) {
 		List<Cines> peliculas = peliculaDao.findByTitulo(titulo);
 		List<CinesDTO> cines= new ArrayList<CinesDTO>();
-		int ant=0;
 		CinesDTO dto=null;
 		List<SalaDTO> salas=null;
+
+		int ant=0;
 		for (Object result : peliculas) {
 			Object[] objectArray = (Object []) result;
 			int id = ((Integer) objectArray[0]).intValue();
@@ -32,21 +34,14 @@ public class ServicioPeliculasImp implements ServicioPeliculas {
 			            dto.setSalas(salas);
 			            cines.add(dto);
 			        }
-				 dto= new CinesDTO();
-				 dto.setId((Integer) objectArray[0]);
-				 dto.setNombre((String)objectArray[1]);
-				 dto.setMail((String)objectArray[2]);
-				 dto.setDireccion((String)objectArray[3]);
-				 dto.setTelefono((String)objectArray[4]);
+				 dto= new CinesDTO((Integer) objectArray[0],(String)objectArray[1],(String)objectArray[2],(String)objectArray[3],(String)objectArray[4]);
 				 salas= new ArrayList<SalaDTO>();
 				 ant = id;
 			}
-			 SalaDTO  salaDto= new SalaDTO();
-			 salaDto.setIdSala(((Long)objectArray[5]));
-			 salaDto.setPelicula(((String)objectArray[6]));
+			
+			 SalaDTO  salaDto= new SalaDTO((Long)objectArray[5],(String)objectArray[6],(Integer)objectArray[7],(Boolean)objectArray[8]);
 			 salas.add(salaDto);
-	      
-		}
+	    }
 		if (dto != null) {
 		    dto.setSalas(salas);
 		    cines.add(dto);
